@@ -20,7 +20,7 @@ main =
         , interopPorts = Serverless.noPorts
 
         -- Entry point for new connections.
-        , endpoint = respond ( 200, textBody "Hello Elm on AWS Lambda" )
+        , endpoint = respond ( 200, textBody "Hello Elm on serverless." )
 
         -- Provides ports to the framework which are used for requests,
         -- and responses. Do not use these ports directly, the framework
