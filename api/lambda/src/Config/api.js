@@ -1,5 +1,5 @@
 const elmServerless = require('@the-sett/serverless-elm-bridge');
-const rc = require('strip-debug-loader!shebang-loader!rc'); // eslint-disable-line
+const rc = require('rc');
 
 const {
   Elm
@@ -11,7 +11,7 @@ const {
 // Try changing these locally by starting the server with environment variables.
 // For example,
 //
-//     demoConfig_someService__protocol=HttPs npm start
+//     demoConfig_someService__protocol=https npm start
 //
 // Also try forcing the decoder to fail to see diagnostics in the logs,
 //
