@@ -1,7 +1,8 @@
 # Demo of elm-serverless
 
-@rupertlssmith on https://elmlang.slack.com
-@rupert on https://discourse.elm-lang.org
+**Contacts for Support**
+- @rupertlssmith on https://elmlang.slack.com
+- @rupert on https://discourse.elm-lang.org
 
 
 === Running Locally
