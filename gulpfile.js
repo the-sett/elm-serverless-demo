@@ -48,6 +48,6 @@ gulp.task('offline', gulp.series(
   'offline_api_stack'
 ));
 
-gulp.task('kill_offline', gulp.series(
+gulp.task('kill', gulp.series(
   'delete_offline_api_stack'
 ));
