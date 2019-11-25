@@ -1,0 +1,146 @@
+service: realworld-api
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  profile: default
+  region: eu-west-2
+  environment:
+    DYNAMODB_NAMESPACE: ${opt:stage, "dev"}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/*"
+
+plugins:
+  - serverless-dynamodb-local
+  - serverless-webpack
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    dontPrintOutput: true
+
+functions:
+  realworld:
+    handler: src/RealWorld/api.handler
+    events:
+      - http:
+          integration: lambda-proxy
+          path: /api/
+          method: ANY
+      - http:
+          integration: lambda-proxy
+          path: /api/{proxy+}
+          method: ANY
+
+resources:
+  Resources:
+
+    UsersDynamoDBTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: username
+            AttributeType: S
+          -
+            AttributeName: email
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: username
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: realworld-${self:provider.environment.DYNAMODB_NAMESPACE}-users
+        GlobalSecondaryIndexes:
+          -
+            IndexName: email
+            KeySchema:
+              -
+                AttributeName: email
+                KeyType: HASH
+            Projection:
+              ProjectionType: ALL
+            ProvisionedThroughput:
+              ReadCapacityUnits: 1
+              WriteCapacityUnits: 1
+
+    ArticlesDynamoDBTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: slug
+            AttributeType: S
+          -
+            AttributeName: dummy
+            AttributeType: S
+          -
+            AttributeName: updatedAt
+            AttributeType: N
+        KeySchema:
+          -
+            AttributeName: slug
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: realworld-${self:provider.environment.DYNAMODB_NAMESPACE}-articles
+        GlobalSecondaryIndexes:
+          -
+            IndexName: updatedAt
+            KeySchema:
+              -
+                AttributeName: dummy
+                KeyType: HASH
+              -
+                AttributeName: updatedAt
+                KeyType: RANGE
+            Projection:
+              ProjectionType: ALL
+            ProvisionedThroughput:
+              ReadCapacityUnits: 1
+              WriteCapacityUnits: 1
+
+    CommentsDynamoDBTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+          -
+            AttributeName: slug
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: realworld-${self:provider.environment.DYNAMODB_NAMESPACE}-comments
+        GlobalSecondaryIndexes:
+          -
+            IndexName: article
+            KeySchema:
+              -
+                AttributeName: slug
+                KeyType: HASH
+            Projection:
+              ProjectionType: ALL
+            ProvisionedThroughput:
+              ReadCapacityUnits: 1
+              WriteCapacityUnits: 1
