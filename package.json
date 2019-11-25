@@ -5,8 +5,10 @@
   "author": "Rupert Smith",
   "private": true,
   "scripts": {
+    "start": "gulp offline",
+    "stop": "gulp kill",
     "deploy": "gulp deploy",
-    "start": "gulp offline"
+    "undeploy": "gulp undeploy"
   },
   "dependencies": {
     "@the-sett/serverless-elm-bridge": "^2.0.0",

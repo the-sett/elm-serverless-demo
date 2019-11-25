@@ -16,9 +16,9 @@ To run the API locally:
 Open the localhost demo endpoints in your browser. For example, the hello world is
 running at : http://localhost:3000/
 
-To close the node process that is running serverless offline:
+To close the process that is running serverless:
 
-    gulp kill
+    npm stop
 
 ## Deployment to AWS
 
@@ -31,10 +31,16 @@ In order to deploy as an AWS Lambda functions you need the following:
 A policy has been created that yields sufficient permission to deploy these demos.
 This can be found in the 'deploy-policy.json' file.
 
+Note: At the moment the AWS deployment is hard-coded to the 'default' profile and the 'eu-west-2' region.
+
+To deploy the demos to AWS:
+
     npm install
     npm run deploy
 
-Note: At the moment the AWS deployment is hard-coded to the 'default' profile and the 'eu-west-2' region.
+To shut down and remove the demos from AWS:
+
+    npm run undeploy
 
 ## Other FaaS platforms
 
