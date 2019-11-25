@@ -1,7 +1,4 @@
-const elmServerless = require('../../../src-bridge');
-
-// Webpack has trouble with shebangs (#!)
-const rc = require('strip-debug-loader!shebang-loader!rc'); // eslint-disable-line
+const elmServerless = require('@the-sett/serverless-elm-bridge');
 
 const {
   Elm

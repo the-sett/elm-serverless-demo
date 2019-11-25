@@ -1,5 +1,4 @@
-const elmServerless = require('../../../src-bridge');
-const rc = require('strip-debug-loader!shebang-loader!rc'); // eslint-disable-line
+const elmServerless = require('@the-sett/serverless-elm-bridge');
 
 const { Elm } = require('./API.elm');
 

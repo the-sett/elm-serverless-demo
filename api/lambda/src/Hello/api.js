@@ -1,15 +1,4 @@
-// You would normally:
-//
-//    npm install -S elm-serverless
-//
-// and then require it like this:
-//
-//    const elmServerless = require('elm-serverless');
-//
-// but this demo is nested in the `elm-serverless` repo, so we just
-// require it relative to the current module's location
-//
-const elmServerless = require('../../../src-bridge');
+const elmServerless = require('@the-sett/serverless-elm-bridge');
 
 // Import the elm app
 const { Elm } = require('./API.elm');
