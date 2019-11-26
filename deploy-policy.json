@@ -65,7 +65,8 @@
         "apigateway:GET",
         "apigateway:POST",
         "apigateway:PUT",
-        "apigateway:DELETE"
+        "apigateway:DELETE",
+        "apigateway:PATCH"
       ],
       "Resource": [
         "arn:aws:apigateway:*::/restapis/*/*",

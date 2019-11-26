@@ -67,6 +67,18 @@ To deploy the demos to AWS:
     npm install
     npm run deploy
 
+If the deployment is successful serverless will print the URLs to access the lambda functions
+on the console.
+
+```
+[gulp-chug] (api/lambda/gulpfile.tmp.1574775778046.js) endpoints:
+  ANY - https://037tw7dhw6.execute-api.us-east-1.amazonaws.com/dev/
+  ... More but only showing the hello world one above.
+```
+
+You can also look at the CloudFormation service on the AWS console to check that the complete
+serverless stack has deploy successfully.
+
 To shut down and remove the demos from AWS:
 
     npm run undeploy
