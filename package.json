@@ -1,7 +1,7 @@
 {
-  "name": "elm-realworld-fullstack",
+  "name": "elm-serverless-demo",
   "version": "0.1.0",
-  "description": "Elm RealWorld Full Stack",
+  "description": "elm-serverless demos",
   "author": "Rupert Smith",
   "private": true,
   "scripts": {
