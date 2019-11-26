@@ -39,7 +39,10 @@ day-to-day development work on the account. Instead another user should be set u
 this, and only given the permissions that it needs.
 
 If you are not familiar with AWS you should consult some of the getting started
-documentation.
+documentation. The following link provides some information on setting up beyond the root
+user:
+
+https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html
 
 ### 2 Configure a deployment user.
 
@@ -47,11 +50,17 @@ As noted above, you should create a user with sufficient permission to deploy th
 
 Permissions in AWS are described by a 'policy'. A policy has been created that yields sufficient permission to deploy these demos and this can be found in the 'deploy-policy.json' file. Use the IAM console to create this policy.
 
-Using the IAM console, create a role with a suitable name such as 'deployment'.
+Using the IAM console, create a role with a suitable name such as 'deployment', and assign
+the policy to that role.
 
 Again using the IAM console, create a user for your development work, and assign the 'deployment' role to that user.
 
 ### 3 Deploy the Demos as the deployment user.
+
+To deploy as the AWS user created above, you need to create a configuration for the AWS cli tool, with the access keys for the user. Once this is done, the configured user will be picked up by the serverless framework as the one to use for deployment. The following link
+shows how to do this:
+
+https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html
 
 To deploy the demos to AWS:
 
