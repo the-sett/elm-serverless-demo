@@ -5,10 +5,9 @@
   "author": "Rupert Smith",
   "private": true,
   "scripts": {
-    "start": "gulp offline",
-    "stop": "gulp kill",
-    "deploy": "gulp deploy",
-    "undeploy": "gulp undeploy"
+    "start": "cd api/lambda && serverless offline",
+    "deploy": "cd api/lambda && serverless deploy",
+    "undeploy": "cd api/lambda && serverless remove"
   },
   "dependencies": {
     "@the-sett/serverless-elm-bridge": "^2.0.0",
@@ -21,15 +20,6 @@
     "del": "^3.0.0",
     "elm": "0.19.0",
     "elm-webpack-loader": "^5.0.0",
-    "gulp": "^4.0.2",
-    "gulp-chug": "^0.5.1",
-    "gulp-exec": "^2.1.3",
-    "gulp-install": "^0.6.0",
-    "gulp-print": "^2.0.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-replace": "^0.6.1",
-    "gulp-rimraf": "^0.2.1",
-    "gulp-util": "^3.0.8",
     "inquirer": "^3.3.0",
     "newman": "^4.5.1",
     "ps-list": "^4.0.0",

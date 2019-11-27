@@ -16,9 +16,7 @@ To run the API locally:
 Open the localhost demo endpoints in your browser. For example, the hello world is
 running at : http://localhost:3000/
 
-To close the process that is running serverless:
-
-    npm stop
+To close the process that is running hit CTRL-C.
 
 ## Deployment to AWS
 
